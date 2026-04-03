@@ -38,7 +38,10 @@ export const metadata: Metadata = {
   },
   robots: { index: true, follow: true },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/icon.png", sizes: "32x32", type: "image/png" },
+    ],
     apple: "/apple-icon.png",
   },
 };
