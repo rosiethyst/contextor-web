@@ -37,6 +37,10 @@ export const metadata: Metadata = {
     description: "We design, build, and ship products across platforms.",
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
 };
 
 export function generateStaticParams() {
