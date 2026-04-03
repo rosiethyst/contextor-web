@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-geist-sans);
+  --font-body: var(--font-inter);
+
+  --color-primary-dark: #191c1f;
+  --color-primary-light: #ffffff;
+  --color-interactive: #494fdf;
+  --color-action: #4f55f1;
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e8e8e8;
+  --color-gray-500: #6b7280;
+  --color-gray-700: #374151;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+/* Hero: letter reveal */
+@keyframes letter-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-letter-reveal {
+  opacity: 0;
+  animation: letter-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Hero: subtitle & CTA fade in */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-sub {
+  animation: hero-fade-up 0.7s ease-out 0.8s both;
+}
+
+.animate-hero-cta {
+  animation: hero-fade-up 0.7s ease-out 1s both;
 }
