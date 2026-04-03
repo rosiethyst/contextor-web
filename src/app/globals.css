@@ -23,34 +23,15 @@ body {
   background: var(--color-primary-light);
   color: var(--color-primary-dark);
   font-family: var(--font-body), system-ui, sans-serif;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
-/* Hero: letter reveal */
-@keyframes letter-reveal {
-  0% {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(-4px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-letter-reveal {
-  opacity: 0;
-  animation: letter-reveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-/* Hero: subtitle & CTA fade in */
-@keyframes hero-fade-up {
+/* Hero: block slide up */
+@keyframes hero-slide-up {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(48px);
   }
   to {
     opacity: 1;
@@ -58,10 +39,14 @@ body {
   }
 }
 
+.animate-hero-title {
+  animation: hero-slide-up 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
 .animate-hero-sub {
-  animation: hero-fade-up 0.7s ease-out 0.8s both;
+  animation: hero-slide-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both;
 }
 
 .animate-hero-cta {
-  animation: hero-fade-up 0.7s ease-out 1s both;
+  animation: hero-slide-up 1s cubic-bezier(0.16, 1, 0.3, 1) 1.6s both;
 }

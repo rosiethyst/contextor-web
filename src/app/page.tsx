@@ -1,17 +1,5 @@
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Values } from "@/components/Values";
-import { Services } from "@/components/Services";
-import { Contact } from "@/components/Contact";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-  return (
-    <>
-      <Hero />
-      <About />
-      <Values />
-      <Services />
-      <Contact />
-    </>
-  );
+export default function RootPage() {
+  redirect("/en");
 }

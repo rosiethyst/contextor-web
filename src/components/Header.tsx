@@ -1,24 +1,32 @@
 "use client";
 
 import { useState } from "react";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
-const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
-];
+interface HeaderDict {
+  about: string;
+  services: string;
+  contact: string;
+  cta: string;
+}
 
-export function Header() {
+export function Header({ dict, locale }: { dict: HeaderDict; locale: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const NAV_LINKS = [
+    { label: dict.about, href: "#about" },
+    { label: dict.services, href: "#services" },
+    { label: dict.contact, href: "#contact" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-primary-light/80 backdrop-blur-md border-b border-gray-200">
       <div className="mx-auto max-w-[1200px] flex items-center justify-between px-6 h-16">
         <a
-          href="/"
-          className="font-display text-xl font-medium tracking-tight text-primary-dark"
+          href={`/${locale}`}
+          className="flex items-center"
         >
-          Contextor
+          <img src="/logo.jpg" alt="Contextor" className="h-8" />
         </a>
 
         {/* Desktop nav */}
@@ -32,11 +40,12 @@ export function Header() {
               {link.label}
             </a>
           ))}
+          <LanguageSwitcher locale={locale} />
           <a
             href="mailto:admin@contextor.cc"
             className="rounded-full bg-primary-dark px-6 py-2.5 text-sm font-medium text-primary-light transition-opacity hover:opacity-85"
           >
-            Get in Touch
+            {dict.cta}
           </a>
         </nav>
 
@@ -85,12 +94,13 @@ export function Header() {
               {link.label}
             </a>
           ))}
+          <LanguageSwitcher locale={locale} />
           <a
             href="mailto:admin@contextor.cc"
             className="rounded-full bg-primary-dark px-6 py-2.5 text-sm font-medium text-primary-light text-center transition-opacity hover:opacity-85"
             onClick={() => setMenuOpen(false)}
           >
-            Get in Touch
+            {dict.cta}
           </a>
         </nav>
       )}
