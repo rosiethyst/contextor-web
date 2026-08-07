@@ -3,6 +3,7 @@ import { FadeIn } from "./FadeIn";
 interface ServicesDict {
   title: string;
   items: { title: string; description: string }[];
+  more: string;
 }
 
 function ArrowIcon() {
@@ -77,6 +78,18 @@ export function Services({ dict, locale }: { dict: ServicesDict; locale: string 
             <ServiceCard key={s.title} {...s} delay={(i + 2) * 100} />
           ))}
         </div>
+
+        <FadeIn delay={400}>
+          <div className="mt-10 flex justify-end">
+            <a
+              href={`/${locale}/services`}
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary-light/80 transition-colors hover:text-primary-light no-underline"
+            >
+              {dict.more}
+              <ArrowIcon />
+            </a>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

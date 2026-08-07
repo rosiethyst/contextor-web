@@ -14,9 +14,9 @@ export function Header({ dict, locale }: { dict: HeaderDict; locale: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const NAV_LINKS = [
-    { label: dict.about, href: "#about" },
-    { label: dict.services, href: "#services" },
-    { label: dict.contact, href: "#contact" },
+    { label: dict.about, href: `/${locale}#about` },
+    { label: dict.services, href: `/${locale}#services` },
+    { label: dict.contact, href: `/${locale}#contact` },
   ];
 
   return (
