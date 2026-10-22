@@ -55,7 +55,72 @@
         "title": "Product Design & Development",
         "description": "Full-cycle product development from concept to launch — mobile apps, web platforms, and everything in between."
       }
-    ]
+    ],
+    "more": "See full service details",
+    "page": {
+      "metaTitle": "Services",
+      "title": "Services",
+      "intro": "Contextor designs how AI fits into your work. For individuals, we build the habits and structure to use AI well. For companies, we deliver custom AI platforms and adoption strategy.",
+      "flagship": {
+        "badge": "Flagship program",
+        "title": "Personal AI Consulting",
+        "price": "KRW 990,000",
+        "priceNote": "per person · VAT included",
+        "description": "We go beyond learning AI — we help you wire it into your actual work and projects. After payment, a private channel opens and 1:1 sessions run on your schedule.",
+        "features": [
+          "1:1 diagnosis — review your AI subscriptions, hardware, and workflow, then design the optimal setup",
+          "Private Discord channel — text coaching plus voice and video (Google Meet) sessions",
+          "Hands-on project coaching — work automation, vibe coding, and shipping prototypes",
+          "Session reports — timestamped notes and summaries from our meeting tools"
+        ],
+        "status": "Cohort 1 (Dec 2025) sold out with 15 participants · email us about the next cohort",
+        "cta": "Ask about joining"
+      },
+      "othersTitle": "For companies & builders",
+      "others": [
+        {
+          "title": "Enterprise AI Consulting",
+          "price": "Contact for pricing",
+          "description": "We audit your processes and design where AI fits. Tool and model selection, team workshops, and an AI transformation roadmap."
+        },
+        {
+          "title": "Personal Custom AI Platform",
+          "price": "Contact for pricing",
+          "description": "AI assistants and automation tools for individuals and small teams. Turn repetitive work into systems."
+        },
+        {
+          "title": "Enterprise Custom AI Platform",
+          "price": "Contact for pricing",
+          "description": "Design, build, deploy, and operate LLM-based platforms — company chatbots, automation systems, and data pipelines."
+        }
+      ],
+      "processTitle": "How it works (personal consulting)",
+      "process": [
+        {
+          "step": "01",
+          "title": "Apply",
+          "description": "Email us your goals and current setup; we align on schedule and scope."
+        },
+        {
+          "step": "02",
+          "title": "Payment",
+          "description": "Pay by bank transfer; a cash receipt is issued as soon as the deposit is confirmed."
+        },
+        {
+          "step": "03",
+          "title": "Sessions",
+          "description": "Text, voice, and video sessions run sequentially in your private Discord channel."
+        },
+        {
+          "step": "04",
+          "title": "Report",
+          "description": "Each session ends with a summary report covering what you learned and what's next."
+        }
+      ],
+      "contactTitle": "Ready to start?",
+      "contactBody": "Questions or want to join? Email us — we reply within a day.",
+      "contactCta": "Send an email"
+    }
   },
   "contact": {
     "title": "Ready to start a project?",
