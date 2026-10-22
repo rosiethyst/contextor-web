@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start -H 127.0.0.1",
     "lint": "eslint",
-    "test:security": "node --test tests/security-headers.test.mjs"
+    "test:security": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test tests/security-headers.test.mjs"
   },
   "engines": {
     "node": "24.22.1"

@@ -1,5 +1,6 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { buildHttpsDestination } from "./lib/https-destination";
 
 const PUBLIC_HOSTS = new Set(["contextor.cc", "www.contextor.cc"]);
 const SAFE_METHODS = new Set(["GET", "HEAD", "OPTIONS"]);
@@ -58,9 +59,10 @@ export function proxy(request: NextRequest) {
       return new NextResponse("HTTPS Required", { status: 400 });
     }
 
-    const destination = new URL(
-      `${request.nextUrl.pathname}${request.nextUrl.search}`,
-      `https://${host}`,
+    const destination = buildHttpsDestination(
+      host,
+      request.nextUrl.pathname,
+      request.nextUrl.search,
     );
     return NextResponse.redirect(destination, 308);
   }

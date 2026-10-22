@@ -5,6 +5,7 @@ import http from "node:http";
 import net from "node:net";
 import path from "node:path";
 import test, { after, before } from "node:test";
+import { buildHttpsDestination } from "../src/lib/https-destination.ts";
 
 const root = path.resolve(import.meta.dirname, "..");
 let server;
@@ -120,7 +121,14 @@ function publicHeaders(host, scheme) {
 
 function rawRequest(pathname, { headers = {}, method = "GET" } = {}) {
   return new Promise((resolve, reject) => {
-    const request = http.request(`${origin}${pathname}`, { headers, method }, (response) => {
+    const target = new URL(origin);
+    const request = http.request({
+      headers,
+      hostname: target.hostname,
+      method,
+      path: pathname,
+      port: target.port,
+    }, (response) => {
       let body = "";
       response.setEncoding("utf8");
       response.on("data", (chunk) => { body += chunk; });
@@ -134,6 +142,37 @@ function rawRequest(pathname, { headers = {}, method = "GET" } = {}) {
     request.end();
   });
 }
+
+test("HTTPS destination setters cannot replace the allowlisted origin", () => {
+  for (const pathname of [
+    "//attacker.example/path",
+    "/\\attacker.example/path",
+    "/%2f%2fattacker.example/path",
+  ]) {
+    const destination = buildHttpsDestination(
+      "contextor.cc",
+      pathname,
+      "?next=https://attacker.example",
+    );
+    assert.equal(destination.origin, "https://contextor.cc");
+    assert.equal(destination.search, "?next=https://attacker.example");
+  }
+});
+
+test("Next path normalization and the proxy never redirect path variants off-origin", async () => {
+  for (const pathname of [
+    "//attacker.example/path?case=slash",
+    "/\\attacker.example/path?case=backslash",
+    "/%2f%2fattacker.example/path?case=encoded",
+  ]) {
+    const response = await rawRequest(pathname, {
+      headers: publicHeaders("contextor.cc", "http"),
+    });
+    assert.equal(response.status, 308);
+    const destination = new URL(response.headers.location, "https://contextor.cc");
+    assert.equal(destination.origin, "https://contextor.cc");
+  }
+});
 
 test("public HTTP redirects canonical and www hosts without an open redirect", async () => {
   for (const host of ["contextor.cc", "www.contextor.cc"]) {
